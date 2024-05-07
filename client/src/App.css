@@ -1,5 +1,11 @@
-body {
-  @apply font-mono;
+h1 {
+  @apply text-2xl font-mono;
+}
+
+/* TopTextStrip.jsx */
+
+#text-strip {
+  @apply w-screen h-8 bg-accent flex items-center font-mono;
 }
 
 .scrolling-text {
@@ -14,4 +20,18 @@ body {
   100% {
     transform: translate(-100%, 0);
   }
+}
+
+/* Footer.jsx */
+
+#footer {
+  @apply flex flex-col justify-center items-center w-screen h-96 bg-secondary;
+}
+
+.footer-content {
+  @apply text-primary text-2xl w-[70%] font-mono;
+}
+
+#footer-bottom-bar {
+  @apply flex text-2xl w-[70%] justify-between items-end mt-auto mb-8 font-bold;
 }

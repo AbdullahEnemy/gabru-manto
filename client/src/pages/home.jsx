@@ -1,11 +1,12 @@
 import React from "react";
 import TopTextStrip from "../components/TopTextStrip";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
     <>
       <TopTextStrip />
-      <h1 className="text-2xl">Bruh</h1>
+      <Footer />
     </>
   );
 }

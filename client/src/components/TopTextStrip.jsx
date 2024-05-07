@@ -3,7 +3,7 @@ import "../App.css";
 
 function TopTextStrip() {
   return (
-    <div className="w-screen h-8 bg-accent flex items-center">
+    <div id="text-strip">
       <p className="scrolling-text">
         ✦ GABRU & MANTO FOOD JOINTS ✦ GABRU & MANTO FOOD JOINTS ✦ GABRU & MANTO
         FOOD JOINTS ✦ GABRU & MANTO FOOD JOINTS ✦ GABRU & MANTO FOOD JOINTS ✦

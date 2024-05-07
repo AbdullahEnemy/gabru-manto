@@ -1,22 +1,23 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/**/*.html',
-    './src/**/*.js',
-    './src/**/*.jsx',
-  ],
+  content: ["./src/**/*.html", "./src/**/*.js", "./src/**/*.jsx"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ["Roboto"],
+        mono: ["Space Mono"],
+      },
+    },
   },
-  plugins: [require('daisyui')],
+  plugins: [require("daisyui")],
   daisyui: {
     themes: [
       {
         gabru: {
-          "primary": "#fcecdd",
-          "secondary": "#180904",
-          "accent": "#F65E2F",
-          "neutral": "#4A3F35",
+          primary: "#fcecdd",
+          secondary: "#180904",
+          accent: "#F65E2F",
+          neutral: "#4A3F35",
           "base-100": "#fcecdd",
 
           "--rounded-box": "1rem", // border radius rounded-box utility class, used in card and other large boxes
@@ -28,9 +29,8 @@ module.exports = {
           "--border-btn": "1px", // border width of buttons
           "--tab-border": "1px", // border width of tabs
           "--tab-radius": "0.5rem", // border radius of tabs
-        }
-      }
-    ]
-  }
-}
-
+        },
+      },
+    ],
+  },
+};
