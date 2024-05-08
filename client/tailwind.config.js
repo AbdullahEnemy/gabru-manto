@@ -7,6 +7,9 @@ module.exports = {
         sans: ["Roboto"],
         mono: ["Space Mono"],
       },
+      boxShadow: {
+        default: "6px 6px 0px 0px #180904",
+      },
     },
   },
   plugins: [require("daisyui")],
