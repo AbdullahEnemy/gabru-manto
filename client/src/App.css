@@ -2,10 +2,14 @@ h1 {
   @apply text-2xl font-mono;
 }
 
+.bordered-shadow {
+  @apply border-2 border-secondary shadow-default rounded-none;
+}
+
 /* TopTextStrip.jsx */
 
 #text-strip {
-  @apply w-screen h-8 bg-accent flex items-center font-mono;
+  @apply w-screen h-8 bg-accent flex items-center font-mono overflow-hidden;
 }
 
 .scrolling-text {
@@ -34,4 +38,32 @@ h1 {
 
 #footer-bottom-bar {
   @apply flex text-2xl w-[70%] justify-between items-end mt-auto mb-8 font-bold;
+}
+
+/* Navbar.jsx */
+
+#navbar {
+  @apply flex justify-between items-center my-4 mx-12;
+}
+
+/* NavbarMenu.jsx */
+
+#navbar-menu {
+  @apply flex items-center gap-4 font-mono;
+}
+
+/* SearchBar.jsx */
+
+.navbar-search-bar {
+  @apply flex items-center gap-2;
+}
+
+/* UserIcon.jsx */
+
+#navbar-user-menu {
+  @apply mt-3 p-2 menu menu-sm dropdown-content bg-base-100 rounded-lg w-52 border border-secondary;
+}
+
+#user-avatar {
+  @apply btn btn-ghost btn-circle avatar;
 }
