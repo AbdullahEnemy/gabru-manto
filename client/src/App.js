@@ -1,6 +1,6 @@
 import "./App.css";
-import Home from "./pages/home";
-import Dashboard from "./pages/dashboard";
+import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import RestaurantDetails from "./pages/restaurantdetails";
