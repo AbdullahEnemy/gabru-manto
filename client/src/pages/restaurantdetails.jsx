@@ -1,27 +1,32 @@
 import React from "react";
 import TopTextStrip from "../components/TopTextStrip";
 import Footer from "../components/Footer";
-import ActionAreaCard from "../components/ActionAreaCard";
+import Navbar from "../components/Navbar";
+import DMComponent from "../components/DetailMenuComponent";
+import RestaurantCard from "../components/RestaurantCard";
+import GMChart from "../components/Chart";
 
-function RestaurantDetails() {
+function RestaurantDetails({ image, name, details, menu }) {
   return (
     <>
       <TopTextStrip />
-      {/* Installed npm install @mui/material for this*/}
-      <ActionAreaCard></ActionAreaCard>
-      {/* <div className="m-8 flex h-screen ">
-        <div className="w-2/6  flex flex-col ">
-          <RestaurantCard></RestaurantCard>
-          <div className="h-1/3 ">
-            <h1 class="">Arcadian Cafe</h1>
+      <Navbar></Navbar>
+      <div className="w-full h-full flex justify-center items-center my-20">
+        <div className="w-5/6 h-5/6 flex justify-between">
+          <div className="w-1/2 flex flex-col items-center">
+            <div className="">
+              <RestaurantCard image="arcadian-packages-mall.jpg" name={name} />
+            </div>
+            <div className="max-w-sm max-h-sm w-full h-full">
+              <GMChart></GMChart>
+            </div>
+          </div>
+          <div className="w-1/2 bg-secondary">
+            <DMComponent details={details} menu={menu} />
           </div>
         </div>
+      </div>
 
-        <div className="w-1/2 p-8 flex flex-col justify-between bg-secondary">
-          <div className="bg-gray-700 h-1/3 mb-4 p-4 text-white">Details</div>
-          <div className="bg-gray-800 h-2/3 p-4 text-white">Menu</div>
-        </div>
-      </div> */}
       <Footer />
     </>
   );
