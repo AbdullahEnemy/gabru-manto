@@ -3,7 +3,7 @@ import TopTextStrip from "../components/TopTextStrip";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import DMComponent from "../components/DetailMenuComponent";
-import RestaurantCard from "../components/RestaurantCard";
+import RestaurantCard from "../components/RCard";
 import GMChart from "../components/Chart";
 
 function RestaurantDetails({ resPoint, image, name, details, menu }) {
