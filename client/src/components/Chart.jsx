@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
-const GMChart = () => {
+const GMChart = ({ restaurantPoint = { x: 0, y: 0 } }) => {
+
   const chartContainer = useRef(null);
   const chartInstance = useRef(null);
 
@@ -14,45 +15,78 @@ const GMChart = () => {
       const ctx = chartContainer.current.getContext("2d");
 
       chartInstance.current = new Chart(ctx, {
-        type: "line",
+
+        type: "scatter",
         data: {
           datasets: [
             {
-              data: [20, 50, 100, 75, 25, 0],
-              label: "Left dataset",
-
-              // This binds the dataset to the left y axis
-              yAxisID: "left-y-axis",
+              label: "Grid Area",
+              data: [
+                { x: -1, y: 1 },
+                { x: 1, y: -1 },
+              ],
+              pointRadius: 0,
+              borderWidth: 1,
             },
             {
-              data: [0.1, 0.5, 1.0, 2.0, 1.5, 0],
-              label: "Right dataset",
-
-              // This binds the dataset to the right y axis
-              yAxisID: "right-y-axis",
+              label: "Restaurant Point",
+              data: [{ x: restaurantPoint["x"], y: restaurantPoint["y"] }],
+              pointRadius: 10,
+              backgroundColor: "rgb(246, 94, 47)",
             },
           ],
-          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
         },
         options: {
+          plugins: {
+            legend: {
+              display: false,
+            },
+          },
+          tooltips: {
+            callbacks: {
+              label: function (tooltipItem) {
+                return tooltipItem.yLabel;
+              },
+            },
+          },
+          aspectRatio: 1, // Set the aspect ratio to 1 for equal width and height
+
           scales: {
-            "left-y-axis": {
+            x: {
+              type: "linear",
+              position: "bottom",
+              grid: {
+                display: true,
+                color: "rgba(0, 0, 0)", // Grid line color
+              },
+              ticks: {
+                stepSize: 1, // Adjust the step size as needed
+                min: -1, // Adjust the min value as needed
+                max: 1, // Adjust the max value as needed
+              },
+            },
+            y: {
               type: "linear",
               position: "left",
-            },
-            "right-y-axis": {
-              type: "linear",
-              position: "right",
+              grid: {
+                display: true,
+                color: "rgba(0, 0, 0)", // Grid line color
+              },
+              ticks: {
+                stepSize: 1, // Adjust the step size as needed
+                min: -1, // Adjust the min value as needed
+                max: 1, // Adjust the max value as needed
+              },
             },
           },
         },
       });
     }
-  }, []);
+  }, [restaurantPoint]);
 
   return (
     <div>
-      <canvas style={{ width: "100%", height: "100%" }} ref={chartContainer} />
+      <canvas style={{ width: "100%", height: "auto" }} ref={chartContainer} />
     </div>
   );
 };
