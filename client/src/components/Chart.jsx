@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 
 const GMChart = ({ restaurantPoint = { x: 0, y: 0 } }) => {
+
   const chartContainer = useRef(null);
   const chartInstance = useRef(null);
 
@@ -14,6 +15,7 @@ const GMChart = ({ restaurantPoint = { x: 0, y: 0 } }) => {
       const ctx = chartContainer.current.getContext("2d");
 
       chartInstance.current = new Chart(ctx, {
+
         type: "scatter",
         data: {
           datasets: [
