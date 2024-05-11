@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import RestaurantIcon from './RestaurantIcon';
 
+
+// user can add restaurant details as 2 restaurant objects given as parameters
+
 const ComparisonBox = ({ Restaurant1, Restaurant2 }) => {
   const [selectedItem1, setSelectedItem1] = useState(null);
   const [selectedItem2, setSelectedItem2] = useState(null);
