@@ -8,7 +8,7 @@ const LoginBox = () => {
       <div className="hero w-3/4 py-8 bordered-shadow">
         <div className="hero-content flex-col lg:flex-row-reverse">
           {/* form element*/}
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-neutral-950 ml-12">
+          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-secondary ml-12">
             <form className="card-body">
               
               {/* username */}
