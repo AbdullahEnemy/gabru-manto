@@ -2,6 +2,10 @@ h1 {
   @apply text-2xl font-mono;
 }
 
+p {
+  @apply font-mono;
+}
+
 .bordered-shadow {
   @apply border-2 border-secondary shadow-default rounded-none;
 }
@@ -92,4 +96,11 @@ h1 {
 
 .selections-section {
   @apply flex flex-col items-center w-[750px];
+}
+
+/* Dashboard.jsx */
+
+.dashboard-nav-btn {
+  /* focus:bg-primary focus:text-secondary */
+  @apply btn btn-neutral rounded-none w-full h-16 font-mono text-2xl font-thin;
 }
