@@ -1,15 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../App.css";
 
-const SignupBox = () => {
+export default function SignUp() {
+  const [UserName, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    fetch("http://localhost:4000/users/signup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        UserName,
+        password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          window.location.href = "/login";
+        } else {
+          alert("Something went wrong");
+        }
+      });
+  };
+
   return (
     <div className="flex justify-center items-center h-screen m-2">
       <div className="hero w-3/4 py-8 bordered-shadow">
         <div className="hero-content flex-col lg:flex-row-reverse">
           {/* form element*/}
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-secondary ml-12">
-            <form className="card-body">
+            <form className="card-body" onSubmit={handleSubmit}>
               {/* email */}
               <div className="form-control">
                 <div className="label">
@@ -25,11 +52,16 @@ const SignupBox = () => {
                     <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
                     <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
                   </svg>
-                  <input type="text" className="grow" placeholder="Email" />
+                  <input
+                    type="email"
+                    className="grow"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
                 </label>
                 <div className="label">
                   <h1 className="text-slate-200 label-text-alt">
-                    {" "}
                     Enter your email address
                   </h1>
                 </div>
@@ -40,20 +72,25 @@ const SignupBox = () => {
                 <div className="label">
                   <h1 className="text-slate-200 label-text">Username</h1>
                 </div>
-                <label class="input input-bordered flex items-center gap-2">
+                <label className="input input-bordered flex items-center gap-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 16 16"
                     fill="currentColor"
-                    class="w-4 h-4 opacity-70"
+                    className="w-4 h-4 opacity-70"
                   >
                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
                   </svg>
-                  <input type="text" class="grow" placeholder="Username" />
+                  <input
+                    type="text"
+                    className="grow"
+                    placeholder="Username"
+                    value={UserName}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
                 </label>
                 <div className="label">
                   <h1 className="text-slate-200 label-text-alt">
-                    {" "}
                     Enter the username you want to use here
                   </h1>
                 </div>
@@ -77,18 +114,26 @@ const SignupBox = () => {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <input type="password" className="grow" />
+                  <input
+                    type="password"
+                    className="grow"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </label>
                 <div className="label">
                   <h1 className="text-slate-200 label-text-alt">
-                    Enter a password between 8 and 15 charactes
+                    Enter a password between 8 and 15 characters
                   </h1>
                 </div>
               </div>
 
               {/* Sign-up button */}
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Sign-up</button>
+                <button type="submit" className="btn btn-primary">
+                  Sign-up
+                </button>
               </div>
             </form>
           </div>
@@ -102,10 +147,9 @@ const SignupBox = () => {
               Sign-up to post <br />
               comments and reviews, <br />
               and to access our <br />
-              plethora of features <br />
-              like personalized <br />
-              recommendations and <br />
-              newsletters!
+              plethora of features like <br />
+              personalized recommendations <br />
+              and newsletters!
             </h1>
 
             {/* bottom left text*/}
@@ -114,13 +158,11 @@ const SignupBox = () => {
               an account?
             </h1>
             <Link to="/login">
-            <button className="btn btn-secondary px-8">Sign-in</button>
+              <button className="btn btn-secondary px-8">Sign-in</button>
             </Link>
           </div>
         </div>
       </div>
     </div>
   );
-};
-
-export default SignupBox;
+}
