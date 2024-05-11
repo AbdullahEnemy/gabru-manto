@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 const LoginBox = () => {
@@ -83,7 +84,7 @@ const LoginBox = () => {
               Don't have <br />
               an account?
             </h1>
-            <button className="btn btn-secondary px-8">Sign-up</button>
+            <button className="btn btn-secondary px-8"><Link to="/signup">Sign-up</Link></button>
           </div>
         </div>
       </div>
