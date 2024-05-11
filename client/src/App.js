@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
-import RestaurantDetails from "./pages/RestaurantDetails";
+import RestaurantDetails from "./pages/restaurantdetails";
 
 function App() {
   return (
