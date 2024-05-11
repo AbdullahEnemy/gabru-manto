@@ -113,7 +113,9 @@ const SignupBox = () => {
               Already have <br />
               an account?
             </h1>
-            <button className="btn btn-secondary px-8"><Link to="/login">Sign-in</Link></button>
+            <Link to="/login">
+            <button className="btn btn-secondary px-8">Sign-in</button>
+            </Link>
           </div>
         </div>
       </div>

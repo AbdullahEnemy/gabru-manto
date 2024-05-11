@@ -84,7 +84,9 @@ const LoginBox = () => {
               Don't have <br />
               an account?
             </h1>
-            <button className="btn btn-secondary px-8"><Link to="/signup">Sign-up</Link></button>
+            <Link to="/signup">
+            <button className="btn btn-secondary px-8">Sign-up</button>
+            </Link>
           </div>
         </div>
       </div>
