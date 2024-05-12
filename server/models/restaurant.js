@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const restaurantSchema = new mongoose.Schema({
   name: {
     type: String,
+    unique: true,
     required: [true, "Your name is required"],
   },
   poe: {
@@ -23,6 +24,12 @@ const restaurantSchema = new mongoose.Schema({
   rating: {
     type: Number,
     required: [true, "Your rating is missing (/5)"],
+  },
+  status: {
+    type: String,
+    enum: ["pending", "Registered"],
+    default: "pending",
+    required: false,
   },
   createdAt: {
     type: Date,

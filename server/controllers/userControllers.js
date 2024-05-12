@@ -25,10 +25,11 @@ const signup = async (req, res, next) => {
 
 const login = async (req, res, next) => {
   try {
-    const { email, password } = req.body;cd
+    const { email, password } = req.body;
     if (!email || !password) {
       return res.json({ message: "All fields are required" });
     }
+    console.log("ok");
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       const auth = await bcrypt.compare(req.body.password, user.password);
