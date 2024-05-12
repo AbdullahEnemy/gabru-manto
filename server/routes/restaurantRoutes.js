@@ -6,6 +6,7 @@ router.post("/register", userVerification, restaurantController.register);
 router.patch("/:id", userVerification, restaurantController.approve);
 router.get("/pending", userVerification, restaurantController.showPending);
 router.get("/show", userVerification, restaurantController.show);
+router.get("/show-all", userVerification, restaurantController.showAll);
 router.delete("/:id", userVerification, restaurantController.del);
 router.get("/:id", userVerification, restaurantController.index);
 module.exports = router;

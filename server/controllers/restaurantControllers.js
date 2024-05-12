@@ -74,6 +74,20 @@ const show = async (req, res, next) => {
     });
   }
 };
+
+const showAll = async (req, res, next) => {
+  try {
+    console.log("(Server) Fetching Restaurants...");
+    if (authurize_user("admin", req, res)) return res;
+    const RegisteredRestaurant = await Restaurant.find();
+    res.json(RegisteredRestaurant);
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred when fetching Restaurants: ${error}`,
+    });
+  }
+};
+
 const index = async (req, res) => {
   try {
     if (authurize_user("admin", req, res)) return res;
@@ -123,6 +137,7 @@ const restaurantControllers = {
   approve: approve,
   showPending: showPending,
   show: show,
+  showAll: showAll,
   del: del,
   index: index,
 };
