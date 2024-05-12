@@ -98,6 +98,13 @@ p {
   @apply flex flex-col items-center w-[750px];
 }
 
+/* ComparisonBox.jsx */
+
+.RestaurantCompMenu {
+
+  @apply card w-96 bg-base-100 shadow-xl border border-secondary  bordered-shadow rounded-sm py-4 px-9 font-mono;
+}
+
 /* Dashboard.jsx */
 
 .dashboard-nav-btn {
