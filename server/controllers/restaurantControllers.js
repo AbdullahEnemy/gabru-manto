@@ -74,6 +74,25 @@ const show = async (req, res, next) => {
     });
   }
 };
+const del = async (req, res) => {
+  try {
+    if (authurize_user("admin", req, res)) return res;
+
+    const deletedRestaurant = await Restaurant.findOneAndDelete({
+      _id: req.params.id,
+    });
+
+    if (!deletedRestaurant) {
+      return res.status(400).json({ message: "Restaurant not found" });
+    }
+
+    res.status(200).json({ message: "Restaurant deleted successfully" });
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred during Restaurant deletion: ${error}`,
+    });
+  }
+};
 
 const authurize_user = (type, req, res) => {
   if (req.user && req.user.userType !== type)
@@ -87,6 +106,7 @@ const restaurantControllers = {
   approve: approve,
   showPending: showPending,
   show: show,
+  del: del,
 };
 
 module.exports = restaurantControllers;

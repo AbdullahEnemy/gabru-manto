@@ -77,9 +77,28 @@ const changePassword = async (req, res) => {
     });
   }
 };
+const del = async (req, res) => {
+  try {
+    if (authurize_user("admin", req, res)) return res;
 
-const authurize_user = (req, res) => {
-  if (req.user && req.user.userType == "user")
+    const deletedUser = await User.findOneAndDelete({
+      _id: req.params.id,
+    });
+
+    if (!deletedUser) {
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred during User deletion: ${error}`,
+    });
+  }
+};
+
+const authurize_user = (type, req, res) => {
+  if (req.user && req.user.userType !== type)
     return res.json({
       status: 403,
       message: "You are not allowed to perform this action",
@@ -89,6 +108,7 @@ const userController = {
   signup: signup,
   login: login,
   changePassword: changePassword,
+  del: del,
 };
 
 module.exports = userController;

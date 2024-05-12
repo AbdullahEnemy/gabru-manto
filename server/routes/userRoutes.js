@@ -8,4 +8,5 @@ router.post("/signup", userController.signup);
 router.post("/login", userController.login);
 router.post("/", userVerification);
 router.patch("/user/:id", userVerification, userController.changePassword);
+router.delete("/:id", userVerification, userController.del);
 module.exports = router;
