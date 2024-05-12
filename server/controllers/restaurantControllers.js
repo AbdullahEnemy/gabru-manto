@@ -74,6 +74,23 @@ const show = async (req, res, next) => {
     });
   }
 };
+const index = async (req, res) => {
+  try {
+    if (authurize_user("admin", req, res)) return res;
+
+    const showRestaurant = await Restaurant.findOne({ _id: req.params.id });
+
+    if (!showRestaurant) {
+      return res.json({ message: "No Restaurant Found" });
+    }
+
+    res.status(200).json(showRestaurant);
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred during Restaurant fetching: ${error}`,
+    });
+  }
+};
 const del = async (req, res) => {
   try {
     if (authurize_user("admin", req, res)) return res;
@@ -107,6 +124,7 @@ const restaurantControllers = {
   showPending: showPending,
   show: show,
   del: del,
+  index: index,
 };
 
 module.exports = restaurantControllers;
