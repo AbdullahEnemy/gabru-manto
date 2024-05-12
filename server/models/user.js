@@ -6,11 +6,7 @@ const userSchema = new mongoose.Schema({
     required: [true, "Your email address is required"],
     unique: true,
   },
-  firstName: {
-    type: String,
-    required: [true, "Your username is required"],
-  },
-  lastName: {
+  UserName: {
     type: String,
     required: [true, "Your username is required"],
   },
@@ -21,8 +17,8 @@ const userSchema = new mongoose.Schema({
   userType: {
     type: String,
     enum: ["admin", "user"],
-    default: "voter",
-    required: [true, "Missing required field 'userType'"],
+    default: "user",
+    required: [false, "Missing required field 'userType'"],
   },
   createdAt: {
     type: Date,

@@ -2,6 +2,10 @@ h1 {
   @apply text-2xl font-mono;
 }
 
+p {
+  @apply font-mono;
+}
+
 .bordered-shadow {
   @apply border-2 border-secondary shadow-default rounded-none;
 }
@@ -99,4 +103,11 @@ h1 {
 .RestaurantCompMenu {
 
   @apply card w-96 bg-base-100 shadow-xl border border-secondary  bordered-shadow rounded-sm py-4 px-9 font-mono;
+}
+
+/* Dashboard.jsx */
+
+.dashboard-nav-btn {
+  /* focus:bg-primary focus:text-secondary */
+  @apply btn btn-neutral rounded-none w-full h-16 font-mono text-2xl font-thin;
 }

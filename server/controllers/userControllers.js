@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const signup = async (req, res, next) => {
   try {
     const existingUser = await User.findOne({ email: req.body.email });
-    console.log(req.body);
     if (existingUser) {
       return res.json({ message: "User already exists" });
     }
@@ -30,6 +29,7 @@ const login = async (req, res, next) => {
     if (!email || !password) {
       return res.json({ message: "All fields are required" });
     }
+    console.log("ok");
     const user = await User.findOne({ email: req.body.email });
     if (user) {
       const auth = await bcrypt.compare(req.body.password, user.password);
@@ -77,9 +77,60 @@ const changePassword = async (req, res) => {
     });
   }
 };
+const del = async (req, res) => {
+  try {
+    if (authurize_user("admin", req, res)) return res;
 
-const authurize_user = (req, res) => {
-  if (req.user && req.user.userType == "user")
+    const deletedUser = await User.findOneAndDelete({
+      _id: req.params.id,
+    });
+
+    if (!deletedUser) {
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred during User deletion: ${error}`,
+    });
+  }
+};
+const show = async (req, res) => {
+  try {
+    if (authurize_user("admin", req, res)) return res;
+    const showUser = await User.find({ userType: "user" });
+
+    if (!showUser) {
+      return res.json({ message: "No User Found" });
+    }
+
+    res.status(200).json(showUser);
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred during User fetching: ${error}`,
+    });
+  }
+};
+const index = async (req, res) => {
+  try {
+    if (authurize_user("admin", req, res)) return res;
+
+    const showUser = await User.findOne({ _id: req.params.id });
+
+    if (!showUser) {
+      return res.json({ message: "No User Found" });
+    }
+
+    res.status(200).json(showUser);
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred during User fetching: ${error}`,
+    });
+  }
+};
+const authurize_user = (type, req, res) => {
+  if (req.user && req.user.userType !== type)
     return res.json({
       status: 403,
       message: "You are not allowed to perform this action",
@@ -89,6 +140,9 @@ const userController = {
   signup: signup,
   login: login,
   changePassword: changePassword,
+  del: del,
+  show: show,
+  index: index,
 };
 
 module.exports = userController;

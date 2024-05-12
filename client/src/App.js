@@ -1,10 +1,14 @@
-import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import RestaurantDetails from "./pages/restaurantdetails";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import RestaurantDetails from "./pages/restaurantdetails";
 import RestaurantComparison from "./pages/RestaurantComparison";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -14,6 +18,8 @@ function App() {
         <Route path="/restaurant" element={<RestaurantDetails />}></Route>
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/compare" element={<RestaurantComparison />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/login" element={<Login />}></Route>
       </Routes>
     </Router>
   );
