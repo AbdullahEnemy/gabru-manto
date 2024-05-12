@@ -96,7 +96,39 @@ const del = async (req, res) => {
     });
   }
 };
+const show = async (req, res) => {
+  try {
+    if (authurize_user("admin", req, res)) return res;
+    const showUser = await User.find({ userType: "user" });
 
+    if (!showUser) {
+      return res.json({ message: "No User Found" });
+    }
+
+    res.status(200).json(showUser);
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred during User fetching: ${error}`,
+    });
+  }
+};
+const index = async (req, res) => {
+  try {
+    if (authurize_user("admin", req, res)) return res;
+
+    const showUser = await User.findOne({ _id: req.params.id });
+
+    if (!showUser) {
+      return res.json({ message: "No User Found" });
+    }
+
+    res.status(200).json(showUser);
+  } catch (error) {
+    res.status(500).json({
+      error: `An error occurred during User fetching: ${error}`,
+    });
+  }
+};
 const authurize_user = (type, req, res) => {
   if (req.user && req.user.userType !== type)
     return res.json({
@@ -109,6 +141,8 @@ const userController = {
   login: login,
   changePassword: changePassword,
   del: del,
+  show: show,
+  index: index,
 };
 
 module.exports = userController;
