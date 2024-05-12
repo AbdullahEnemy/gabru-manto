@@ -4,6 +4,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const userRouter = require("./routes/userRoutes");
 const resturantRouter = require("./routes/restaurantRoutes");
+const foodItemRouter = require("./routes/foodItemsRoutes");
 require("dotenv").config();
 const { MONGO_URL, PORT } = process.env;
 const app = express();
@@ -40,3 +41,4 @@ app.use(express.json());
 
 app.use("/users", userRouter);
 app.use("/resturants", resturantRouter);
+app.use("/foodItems", foodItemRouter);
