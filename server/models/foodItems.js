@@ -16,6 +16,10 @@ const foodItemsSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Your price is missing"],
   },
+  imgUrl: {
+    type: String,
+    required: [true, "IMG URL is missing"],
+  },
   createdAt: {
     type: Date,
     default: Date.now,

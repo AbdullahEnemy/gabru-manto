@@ -25,10 +25,14 @@ const restaurantSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Your rating is missing (/5)"],
   },
+  imgUrl: {
+    type: String,
+    required: [true, "IMG URL is missing"],
+  },
   status: {
     type: String,
-    enum: ["pending", "Registered"],
-    default: "pending",
+    enum: ["Pending", "Registered"],
+    default: "Pending",
     required: false,
   },
   createdAt: {
