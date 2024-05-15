@@ -1,10 +1,4 @@
-import React from "react";
-import TopTextStrip from "../components/TopTextStrip";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import ComparisonBox from "../components/ComparisonBox";
-
-let restaurants = [
+const restaurantData = [
   {
     name: " Monal Lahore",
     poe: "Asad Jutt",
@@ -56,18 +50,4 @@ let restaurants = [
   },
 ];
 
-function RestaurantComparison() {
-  return (
-    <>
-      <TopTextStrip />
-      <Navbar />
-      <ComparisonBox
-        Restaurant1={restaurants[0]}
-        Restaurant2={restaurants[2]}
-      />
-      <Footer />
-    </>
-  );
-}
-
-export default RestaurantComparison;
+module.exports = restaurantData;

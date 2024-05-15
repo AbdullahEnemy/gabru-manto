@@ -5,11 +5,11 @@ import React from "react";
 const TopPickCard = ({ imgUrl, name, price }) => {
   return (
     <div className="flex flex-col w-72 h-56 border-default text-lg font-mono font-bold">
-      <div className="w-full h-32 border-default">
+      <div className="w-full h-32 border-default overflow-hidden">
         <img src={imgUrl} alt="Food" />
       </div>
 
-      <div className="flex items-center w-full h-12 border-default">
+      <div className="flex items-center w-full h-12 border-default bg-primary">
         <p className="mx-2">{name}</p>
       </div>
 
@@ -19,7 +19,7 @@ const TopPickCard = ({ imgUrl, name, price }) => {
         </div>
         <div className="border-default">
           <button className="btn w-24 rounded-none btn-accent text-xl">
-            BUY
+            ♥︎
           </button>
         </div>
       </div>
